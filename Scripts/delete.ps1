@@ -11,6 +11,11 @@
    #delete policy initiative assignment
    az policy assignment delete --name assign-enterprise-baseline --scope /subscriptions/1cce49eb-149c-44f4-8c11-763dc5455ee6
    
+   #delete old assignment which I cant see but it exists somewhere in the portal and is causing issues to delete policy initiative
+   az policy assignment delete `
+  --name enterpriseBaselineAssignment `
+  --scope /subscriptions/1cce49eb-149c-44f4-8c11-763dc5455ee6
+
    #delete initiative definition
    az policy set-definition delete --name enterprise-governance-baseline 
 

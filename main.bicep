@@ -1,3 +1,4 @@
+targetScope = 'subscription'
 module https './policies/enforce-https.bicep' = {
   name: 'httpsPolicy'
 }
@@ -12,6 +13,7 @@ module tags './policies/require-tag.bicep' = {
 
 module initiative './initiatives/enterprise-baseline.bicep' = {
   name: 'initiativeModule'
+
   dependsOn: [
     https
     public
@@ -21,9 +23,7 @@ module initiative './initiatives/enterprise-baseline.bicep' = {
 
 module assignment './assignments/assign-baseline.bicep' = {
   name: 'assignmentModule'
-  params: {
-    subscriptionId: subscription().subscriptionId
-  }
+
   dependsOn: [
     initiative
   ]
